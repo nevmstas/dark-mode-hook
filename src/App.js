@@ -4,7 +4,7 @@ import {GlobalStyles} from './styles/global'
 import {ThemeProvider} from 'styled-components'
 import {lightTheme, darkTheme} from './styles/theme'
 import { useState } from 'react';
-
+import Toggle from './Components/Toggle'
 
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
     <ThemeProvider theme={theme==='light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <button onClick={toggleTheme}>Toggle theme</button>
-        <h1>It's the light theme!</h1>
+        <Toggle theme={theme} toggleTheme={toggleTheme} />
+        <h1>It's a {theme === 'light' ? 'light theme' : 'dark theme'}!</h1>
       </>
     </ThemeProvider>
   );
