@@ -5,17 +5,16 @@ import {ThemeProvider} from 'styled-components'
 import {lightTheme, darkTheme} from './styles/theme'
 import { useState } from 'react';
 import Toggle from './Components/Toggle'
+import { useDarkMode } from './hooks/useDarkMode';
 
 
 function App() {
-  const [theme, setTheme] = useState('light')
+  const [theme, toggleTheme] = useDarkMode()
 
-  const toggleTheme = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-  }
+  const themeMode = theme === 'light'? lightTheme : darkTheme
 
   return (
-    <ThemeProvider theme={theme==='light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themeMode}>
       <>
         <GlobalStyles />
         <Toggle theme={theme} toggleTheme={toggleTheme} />
